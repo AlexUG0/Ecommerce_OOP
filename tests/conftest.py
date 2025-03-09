@@ -13,10 +13,12 @@ def product():
         quantity=5
     )
 
+
 @pytest.fixture
 def category():
     return Category(
         name="Смартфоны",
-        description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
-        products=[product()]
+        description="Смартфоны, как средство не только коммуникации, "
+                    "но и получения дополнительных функций для удобства жизни",
+        products=[Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)]
     )
