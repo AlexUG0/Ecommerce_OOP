@@ -17,9 +17,11 @@ def test_product_created(new_prod_param):
     assert product1.price == 180000.0
     assert product1.quantity == 5
 
+
 def test_price_getter():
     product1 = Product(name="Пармезан", description="Натуральные сыры", price=99.99, quantity=10)
     assert product1.price == 99.99
+
 
 def test_price_setter():
     product1 = Product(name="Пармезан", description="Натуральные сыры", price=99.99, quantity=10)
