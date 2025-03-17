@@ -17,9 +17,11 @@ def test_product_created(new_prod_param):
     assert product1.price == 180000.0
     assert product1.quantity == 5
 
+
 def test_price_getter():
     product1 = Product(name="Пармезан", description="Натуральные сыры", price=99.99, quantity=10)
     assert product1.price == 99.99
+
 
 def test_price_setter():
     product1 = Product(name="Пармезан", description="Натуральные сыры", price=99.99, quantity=10)
@@ -28,3 +30,11 @@ def test_price_setter():
     with patch("builtins.input", return_value="no"):
         product1.price = - 121.00
         assert product1.price == 120.00
+
+
+def test_product_str(product):
+    assert str(product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+
+
+def test_product_add(product, product2):
+    assert (product + product2) == 1334000.0
