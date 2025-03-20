@@ -25,3 +25,7 @@ def test_add_product(category, product2):
 
 def test_category_str(category):
     assert str(category) == "Смартфоны, количество продуктов: 27 шт."
+
+
+# def test_add_product_error(category, product):
+#     category.add_product = 1

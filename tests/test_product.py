@@ -38,3 +38,4 @@ def test_product_str(product):
 
 def test_product_add(product, product2):
     assert (product + product2) == 1334000.0
+
