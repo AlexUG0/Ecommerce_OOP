@@ -1,3 +1,8 @@
+import pytest
+
+from src.lawngrass import LawnGrass
+
+
 def test_category_init(category):
     assert category.name == "Смартфоны"
     assert category.description == ("Смартфоны, как средство не только коммуникации, "
@@ -27,5 +32,6 @@ def test_category_str(category):
     assert str(category) == "Смартфоны, количество продуктов: 27 шт."
 
 
-# def test_add_product_error(category, product):
-#     category.add_product = 1
+def test_add_product_error(grass):
+    with pytest.raises(TypeError):
+        LawnGrass()
