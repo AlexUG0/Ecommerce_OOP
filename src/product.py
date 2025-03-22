@@ -3,13 +3,15 @@ from abc import ABC, abstractmethod
 
 class BaseProduct(ABC):
     """Базовый абстрактный класс для Product"""
+
+    @classmethod
     @abstractmethod
-    def __add__(self, other):
+    def new_product(cls, *args, **kwargs):
         pass
 
 
 class InitMixin:
-    """Класс-миксин для  печати в консоль информации при создании объекта, то есть при работе метода __init__"""
+    """Класс-миксин для печати в консоль информации при создании объекта, то есть при работе метода __init__"""
     def __init__(self):
         print(repr(self))
 
@@ -44,8 +46,8 @@ class Product(BaseProduct, InitMixin):
         raise TypeError
 
     @classmethod
-    def new_product(cls, params):
-        return cls(**params)
+    def new_product(cls, _dict):
+        return cls(**_dict)
 
     @property
     def price(self):
