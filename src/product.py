@@ -1,5 +1,30 @@
-class Product:
-    """ Класс для описания товаров """
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+    """Базовый абстрактный класс для Product"""
+
+    @classmethod
+    @abstractmethod
+    def new_product(cls, *args, **kwargs):
+        pass
+
+
+class InitMixin:
+    """Класс-миксин для печати в консоль информации при создании объекта, то есть при работе метода __init__"""
+    def __init__(self):
+        print(repr(self))
+
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}({self.name}, {self.description}, "
+            f"{self.price}, {self.quantity})"
+        )
+
+
+class Product(BaseProduct, InitMixin):
+    """Класс для описания товаров"""
+
     name: str
     description: str
     price: float
@@ -10,6 +35,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
@@ -20,8 +46,8 @@ class Product:
         raise TypeError
 
     @classmethod
-    def new_product(cls, params):
-        return cls(**params)
+    def new_product(cls, _dict):
+        return cls(**_dict)
 
     @property
     def price(self):
