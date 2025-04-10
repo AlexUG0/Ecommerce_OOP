@@ -1,6 +1,7 @@
 import pytest
 
 from src.lawngrass import LawnGrass
+from src.product import Product
 
 
 def test_category_init(category):
@@ -35,3 +36,8 @@ def test_category_str(category):
 def test_add_product_error(grass):
     with pytest.raises(TypeError):
         LawnGrass()
+
+
+def test_add_product_without_quantity():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("Test Product", "Test description", 100, 0)
