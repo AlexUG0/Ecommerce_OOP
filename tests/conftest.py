@@ -1,9 +1,9 @@
 import pytest
 
 from src.category import Category
+from src.lawngrass import LawnGrass
 from src.product import Product
 from src.smartphone import Smartphone
-from src.lawngrass import LawnGrass
 
 
 @pytest.fixture
@@ -55,3 +55,12 @@ def smartphone2():
 @pytest.fixture
 def grass():
     return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+
+@pytest.fixture
+def category_without_product():
+    return Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, "
+        "но и получения дополнительных функций для удобства жизни"
+    )

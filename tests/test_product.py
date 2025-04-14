@@ -54,3 +54,8 @@ def test_init_mixin(capsys):
     LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
     message = capsys.readouterr()
     assert message.out.strip() == "LawnGrass(Газонная трава, Элитная трава для газона, 500.0, 20)"
+
+
+def test_middle_price(category, category_without_product):
+    assert category.middle_price() == 140333.33333333334
+    assert category_without_product.middle_price() == 0
